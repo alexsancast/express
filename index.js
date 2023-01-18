@@ -5,7 +5,6 @@ const app = express();
 
 app.listen(3000);
 
-
 //Cargar imagen
 app.get("/", (req, res) => {
   res.sendFile("./javascript.png", {
@@ -33,10 +32,26 @@ app.delete("/productos", (req, res) => {
   res.send("Eliminando prodcuto");
 });
 
-//Mandar un json 
+//Mandar un json
 
-app.get("/user", (req,res)=>{
-    res.json({name : "Alexander"})
-})
+app.get("/user", (req, res) => {
+  res.json({
+    name: "Alexander",
+    lastname: "Castillo",
+    address: {
+      city: "New York ",
+      street: "Some street 23",
+    },
+  });
+});
+
+//Mandar status 
+
+app.get("/isAlive", (req, res) => {
+  res.sendStatus(200);
+});
+
+//Body request 
+
 
 console.log("Server on port 3000...");
